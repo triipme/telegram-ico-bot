@@ -39,7 +39,7 @@ post '/' do
   from_username = data['from']['username']
   should_kill = false
 
-  # Join & leave event
+  # Member 'joined' event, keeping track in Firebase, since Telegram wouldn't give us this stats
   if data['new_chat_members']
     should_kill = true
     begin
@@ -49,6 +49,7 @@ post '/' do
     end
   end
 
+  # Member 'left' event, keeping track in Firebase, since Telegram wouldn't give us this stats
   if data['left_chat_member']
     should_kill = true
     begin
@@ -59,17 +60,22 @@ post '/' do
   end
 
   # Detect blacklist links
-  txt = data['text']
-  if !should_kill && txt =~ /https?:\/\/[\S]+/
-    if txt =~ /ico\.triip\.me/
-    else
-      should_kill = true
-      p "DETECTED BLACKLISTED LINKS : #{from_username} : #{txt}"
-    end
+  if !should_kill && data['entities']
+    # "text" => "this is a sample chat message with google.com embedded link in Telegram window",
+    # "entities" => [
+    #   [0] {
+    #       "offset" => 35,
+    #       "length" => 10,
+    #         "type" => "url"
+    #   }
+    # To keep it simple here, we simply rely on Telegram's parse to pick up any URL
+    # Depending on your needs you can customise the logic here to allow certain domains only
+    should_kill = true
+    p "DETECTED BLACKLISTED LINKS : #{from_username} : #{txt}"
   end
 
   # Detect bad words
-  if !should_kill && txt =~ /fuck/
+  if !should_kill && data['text'] =~ /fuck/
     should_kill = true
     p "DETECTED BLACKLISTED WORDS : #{from_username} : #{txt}"
   end
