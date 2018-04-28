@@ -1,0 +1,31 @@
+h1 Telegram Webhook status
+
+b Calling /getWebhookInfo
+pre
+  = @webHookInfo
+i If the above value looks normal and matches your current host, everything is properly config
+
+hr
+
+h2 Next step
+
+ul
+  li Add your Bot to your Group / Super Group
+  li Make the Bot an Admin
+  li 
+    b Advanced setup: 
+    | look at 
+    code config/firebase.json
+    |  file for setting up Firebase integration
+
+hr
+
+h2 How to check if it is working
+
+ul
+  li Observe when a new member joined, the event message should be deleted within a few seconds (only on Desktop Telegram app, not on mobile). If it does not, look at Heroku logs for error messages.
+  li
+    | Try posting any link as a non-whitelisted user, you should be banned for 
+    = ENV['GRACE_PERIOD']
+    |  seconds
+  li Look at Firebase Console to see changes in user lists

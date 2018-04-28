@@ -1,0 +1,10 @@
+.DS_Store
+log/
+tmp/
+db/database.yml
+node_modules/
+.idea
+heroku_db_download
+.env
+src/scripts/
+*.swp

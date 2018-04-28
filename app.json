@@ -1,0 +1,27 @@
+{
+  "name": "Telegram Bot for ICO",
+  "description": "One-click package for deploying Telegram helper bot for ICO, written with Sinatra framework (Ruby)",
+  "repository": "https://github.com/triipme/telegram-ico-bot",
+  "logo": "https://raw.githubusercontent.com/triipme/telegram-ico-bot/master/public/logo.png",
+  "keywords": ["telegram", "ruby", "ico", "bot", "sinatra"],
+  "success_url": "/webhook",
+  "addons": ["papertrail"],
+  "env": {
+    "RAILS_ENV": "production",
+    "BOT_TOKEN": {
+      "description": "Bot token from Telegram Bot Father",
+      "value": ""
+    },
+    "GRACE_PERIOD": {
+      "description": "How long should users be banned if violating rules",
+      "value": 300
+    },
+    "WHITELIST_USERS_CSV": {
+      "description": "List of users to ignore, these users can post anything in the Group/Super Group",
+      "value": "usernames,separated,by,commas"
+    }
+  },
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  }
+}
