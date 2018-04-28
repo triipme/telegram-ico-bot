@@ -19,6 +19,10 @@
     "WHITELIST_USERS_CSV": {
       "description": "List of users to ignore, these users can post anything in the Group/Super Group",
       "value": "usernames,separated,by,commas"
+    },
+    "FIREBASE_BASE_URL": {
+      "description": "Create a new database in Firebase and paste its URL herer",
+      "value": "https://xxxxxx.firebaseio.com/"
     }
   },
   "scripts": {
