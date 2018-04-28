@@ -66,4 +66,4 @@ The rest are miscellaneous framework files necessary for running on Heroku.
 - Follow instructions in `config/firebase.json` to config link with Firebase.
 - Start server with `ruby app.rb`.
 - User local tunneling such as `ngrok` to create a public URL.
-- Load `/webhook` in browser with public URL.
+- Load `/webhook` in browser with public path (must be HTTPS).
