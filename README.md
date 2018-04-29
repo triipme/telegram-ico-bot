@@ -14,7 +14,7 @@ This initial codebase was written in a night, probably [CUI](http://brej.org/edi
 
 Let's **fight scammers together**!
 
-Made for [ico.triip.me](https://ico.triip.me) by [Kent Nguyen](github.com/kentnguyen)
+Made for [ico.triip.me](https://ico.triip.me) by [Kent Nguyen](https://github.com/kentnguyen)
 
 ---
 
